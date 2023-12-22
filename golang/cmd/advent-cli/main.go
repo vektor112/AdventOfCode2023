@@ -10,71 +10,71 @@ import (
 )
 
 const (
-  DAY_1 = "1"
-  DAY_2 = "2"
+	DAY_1 = "1"
+	DAY_2 = "2"
 )
 
 type ChallengeRunnerFunction func(scanner []string) string
 
 var challenges = map[string]ChallengeRunnerFunction{
-  DAY_1: day1.RunCalculation,
-  DAY_2: day2.RunCalculation,
+	DAY_1: day1.RunCalculation,
+	DAY_2: day2.RunCalculation,
 }
 
 func check(e error) {
-    if e != nil {
-        panic(e)
-    }
+	if e != nil {
+		panic(e)
+	}
 }
 
 func getInput() string {
-  scanner := bufio.NewScanner(os.Stdin)
+	scanner := bufio.NewScanner(os.Stdin)
 
-  fmt.Println("Enter the day of challenge (1, 2, 3 ...):")
+	fmt.Println("Enter the day of challenge (1, 2, 3 ...):")
 
-  var input string
+	var input string
 
 	for scanner.Scan() {
 		input = scanner.Text()
-    break
+		break
 	}
 	err := scanner.Err()
-  check(err)
+	check(err)
 
-  return input
+	return input
 }
 
 func collectLines(input string) []string {
-  currentDir, err := os.Getwd()
-  check(err)
-  file, err := os.Open(currentDir + "/../example/" + input)
-  check(err)
-  defer file.Close()
-  
-  var lines []string
-  fileScanner := bufio.NewScanner(file)
-  fileScanner.Split(bufio.ScanLines)
+	currentDir, err := os.Getwd()
+	check(err)
+	file, err := os.Open(currentDir + "/../example/" + input)
+	check(err)
+	defer file.Close()
 
-  for fileScanner.Scan() {
+	var lines []string
+	fileScanner := bufio.NewScanner(file)
+	fileScanner.Split(bufio.ScanLines)
+
+	for fileScanner.Scan() {
 		line := fileScanner.Text()
 		lines = append(lines, line)
 	}
 
-  return lines
+	return lines
 }
 
 func main() {
-  input := getInput()
-  
-  foundChallenge := challenges[input]
-  
-  if foundChallenge == nil {
-    fmt.Println("This day is not supported.")
-    return
-  } else {
-    fmt.Println("Load the example/", input)
-    lines := collectLines(input)
-    fmt.Println("Running the", input, "day challenge...")
-    fmt.Println("The result is:", foundChallenge(lines))
-  }
+	input := getInput()
+
+	foundChallenge := challenges[input]
+
+	if foundChallenge == nil {
+		fmt.Println("This day is not supported.")
+		return
+	} else {
+		fmt.Println("Load the example/", input)
+		lines := collectLines(input)
+		fmt.Println("Running the", input, "day challenge...")
+		fmt.Println("The result is:", foundChallenge(lines))
+	}
 }
