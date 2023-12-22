@@ -6,16 +6,19 @@ import (
 	"os"
 
 	"github.com/vektor112/AdventOfCode2023/internal/day1"
+	"github.com/vektor112/AdventOfCode2023/internal/day2"
 )
 
 const (
   DAY_1 = "1"
+  DAY_2 = "2"
 )
 
 type ChallengeRunnerFunction func(scanner []string) string
 
 var challenges = map[string]ChallengeRunnerFunction{
   DAY_1: day1.RunCalculation,
+  DAY_2: day2.RunCalculation,
 }
 
 func check(e error) {

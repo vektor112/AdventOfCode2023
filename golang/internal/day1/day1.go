@@ -4,6 +4,8 @@ import (
 	"strconv"
 	"strings"
 	"unicode"
+
+	"github.com/vektor112/AdventOfCode2023/internal/utils"
 )
 
 const (
@@ -52,14 +54,6 @@ var wordToNumberString = map[string]string{
   SEVEN_STRING: SEVEN_NUMBER,
   EIGHT_STRING: EIGHT_NUMBER,
   NINE_STRING: NINE_NUMBER,
-}
-
-func sum(numbers []int) int {
-    sum := 0
-    for _, num := range numbers {
-        sum += num
-    }
-    return sum
 }
 
 func getWordKeyFromCharacters(index, lengthOfNumberWord int, characters *[]rune) string {
@@ -130,5 +124,5 @@ func RunCalculation(lines []string) string {
     }
   }
 
-  return strconv.Itoa(sum(numbers))
+  return strconv.Itoa(utils.SumIntegers(numbers))
 }
