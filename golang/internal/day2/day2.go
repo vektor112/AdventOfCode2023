@@ -36,6 +36,7 @@ func trimStrings(items *[]string) {
 func RunCalculation(lines []string) string {
 
   var possibleGameIds []int
+  var powers []int
 
 	for _, line := range lines {
     mainParts := strings.Split(line, ":")
@@ -63,7 +64,16 @@ func RunCalculation(lines []string) string {
        cubeColorCounter[GREEN_COLOR] <= GREEN_LIMIT {
       possibleGameIds = append(possibleGameIds, gameId)
     }
+    
+    powers = append(
+      powers, 
+      cubeColorCounter[RED_COLOR] * cubeColorCounter[BLUE_COLOR] * cubeColorCounter[GREEN_COLOR],
+    ) 
 	}
 
-  return strconv.Itoa(utils.SumIntegers(possibleGameIds))
+  // Part 1
+  // return strconv.Itoa(utils.SumIntegers(possibleGameIds))
+
+  // Part 2
+  return strconv.Itoa(utils.SumIntegers(powers))
 }
