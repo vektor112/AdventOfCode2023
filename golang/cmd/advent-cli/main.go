@@ -44,7 +44,7 @@ func getInput() string {
 func collectLines(input string) []string {
   currentDir, err := os.Getwd()
   check(err)
-  file, err := os.Open(currentDir + "/example/" + input)
+  file, err := os.Open(currentDir + "/../example/" + input)
   check(err)
   defer file.Close()
   
