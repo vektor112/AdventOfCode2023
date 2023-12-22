@@ -1,11 +1,11 @@
 package day1
 
 import (
-	"strconv"
-	"strings"
-	"unicode"
+  "strconv"
+  "strings"
+  "unicode"
 
-	"github.com/vektor112/AdventOfCode2023/internal/utils"
+  "github.com/vektor112/AdventOfCode2023/internal/utils"
 )
 
 const (

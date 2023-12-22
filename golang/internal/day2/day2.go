@@ -1,10 +1,10 @@
 package day2
 
 import (
-	"strconv"
-	"strings"
+  "strconv"
+  "strings"
 
-	"github.com/vektor112/AdventOfCode2023/internal/utils"
+  "github.com/vektor112/AdventOfCode2023/internal/utils"
 )
 
 const (
@@ -38,7 +38,7 @@ func RunCalculation(lines []string) string {
   var possibleGameIds []int
   var powers []int
 
-	for _, line := range lines {
+  for _, line := range lines {
     mainParts := strings.Split(line, ":")
 
     gameId, _ := strconv.Atoi(strings.Split(mainParts[0], " ")[1])
@@ -69,7 +69,7 @@ func RunCalculation(lines []string) string {
       powers, 
       cubeColorCounter[RED_COLOR] * cubeColorCounter[BLUE_COLOR] * cubeColorCounter[GREEN_COLOR],
     ) 
-	}
+  }
 
   // Part 1
   // return strconv.Itoa(utils.SumIntegers(possibleGameIds))
